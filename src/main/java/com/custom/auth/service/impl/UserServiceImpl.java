@@ -3,7 +3,10 @@ package com.custom.auth.service.impl;
 import com.custom.auth.entity.User;
 import com.custom.auth.exception.BadRequestException;
 import com.custom.auth.repository.UserRepository;
+import com.custom.auth.service.CustomEmailService;
 import com.custom.auth.service.UserService;
+import com.custom.auth.util.EncDecUtil;
+import com.custom.auth.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -15,11 +18,24 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private CustomEmailService customEmailService;
+
+    @Autowired
+    private EncDecUtil encDecUtil;
+
+    @Autowired
+    private JwtUtil jwtUtil;
+
     @Override
-    public void saveUser(User user) {
+    public String saveUser(User user) {
         try {
             user.setIsActive(Boolean.FALSE);
-            userRepository.save(user);
+            user.setPassword(encDecUtil.encryptString(user.getPassword()));
+            User savedUser = userRepository.save(user);
+            return jwtUtil.createJwtToken(savedUser);
+//            customEmailService.sendActivationLink(savedUser);
         }
         catch (DataIntegrityViolationException e){
             throw new BadRequestException("Violation of unique field"+e.getMessage());

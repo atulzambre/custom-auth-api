@@ -26,6 +26,8 @@ public class User {
     private String email;
     @Column
     private Boolean isActive;
+    @Column
+    private Long activateLinkAttempt;
 
     @CreationTimestamp
     private LocalDateTime createdDateTime;

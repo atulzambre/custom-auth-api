@@ -20,4 +20,14 @@ public class CustomExceptionAdvice {
                 .build();
         return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(CustomEmailException.class)
+    public ResponseEntity<ErrorMessage> handleCustomEmailException(CustomEmailException e, WebRequest webRequest){
+        ErrorMessage errorMessage = ErrorMessage.builder()
+                .dateTime(LocalDateTime.now())
+                .httpStatus(HttpStatus.REQUEST_TIMEOUT)
+                .description(e.getMessage())
+                .build();
+        return new ResponseEntity<>(errorMessage, HttpStatus.REQUEST_TIMEOUT);
+    }
 }
