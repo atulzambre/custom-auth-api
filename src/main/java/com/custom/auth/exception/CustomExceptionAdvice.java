@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public class CustomExceptionAdvice {
 
     @ExceptionHandler(BadRequestException.class)
-    public ResponseEntity<ErrorMessage> handleBadRequestException(BadRequestException e, WebRequest webRequest){
+    public ResponseEntity<ErrorMessage> handleBadRequestException(BadRequestException e, WebRequest webRequest) {
         ErrorMessage errorMessage = ErrorMessage.builder()
                 .dateTime(LocalDateTime.now())
                 .httpStatus(HttpStatus.BAD_REQUEST)
@@ -22,7 +22,7 @@ public class CustomExceptionAdvice {
     }
 
     @ExceptionHandler(CustomEmailException.class)
-    public ResponseEntity<ErrorMessage> handleCustomEmailException(CustomEmailException e, WebRequest webRequest){
+    public ResponseEntity<ErrorMessage> handleCustomEmailException(CustomEmailException e, WebRequest webRequest) {
         ErrorMessage errorMessage = ErrorMessage.builder()
                 .dateTime(LocalDateTime.now())
                 .httpStatus(HttpStatus.REQUEST_TIMEOUT)

@@ -1,29 +1,66 @@
 package com.custom.auth.util;
 
 import com.custom.auth.entity.User;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
+import java.security.Key;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 
 @Component
 public class JwtUtil {
 
-    public String createJwtToken(User user){
+    @Value("${jwt.signing.key}")
+    private String signingKey;
 
-        Map<String, Object> userMap= new HashMap<>();
-        userMap.put("activate-user",user);
+    public String createJwtToken(Map<String, Object> extraClaims, User user) {
         return Jwts.builder()
-                .setIssuer("custom-auth-api")
-                .setSubject("activation-token")
-//                .claim("activate-user")
-                .setIssuedAt(Date.from(Instant.now()))
-                .setExpiration(new Date(10000))
-                .compact();
+                .setClaims(extraClaims)
+                .setSubject(user.getUsername())
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + 10000))
+                .signWith(getSigningKey(), SignatureAlgorithm.HS256).compact();
+    }
+
+    private Key getSigningKey() {
+        byte[] keyBytes = Decoders.BASE64.decode(signingKey);
+        return Keys.hmacShaKeyFor(keyBytes);
+    }
+
+    public Boolean isTokenValid(String jwt, UserDetails userDetails) {
+        final String username = extractUserName(jwt);
+        return (username.equals(userDetails.getUsername()) && !isTokenExpired(jwt));
+    }
+
+    private boolean isTokenExpired(String jwt) {
+        return Jwts.parserBuilder()
+                .setSigningKey(getSigningKey())
+                .build()
+                .parseClaimsJws(jwt)
+                .getBody().getExpiration().before(new Date());
+    }
+
+    public String extractUserName(String jwt) {
+        return Jwts.parserBuilder()
+                .setSigningKey(getSigningKey())
+                .build()
+                .parseClaimsJws(jwt)
+                .getBody().getSubject();
+    }
+
+    private Claims extractAllClaims(String Jwt) {
+        return Jwts.parserBuilder()
+                .setSigningKey(getSigningKey())
+                .build()
+                .parseClaimsJws(Jwt)
+                .getBody();
     }
 
 }

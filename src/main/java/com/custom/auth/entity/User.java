@@ -1,15 +1,11 @@
 package com.custom.auth.entity;
 
 
-import com.custom.auth.model.Role;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.Data;
-
-import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -31,7 +27,7 @@ public class User {
     @Column
     private Long activateLinkAttempt;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Roles> roles;
 
     @CreationTimestamp

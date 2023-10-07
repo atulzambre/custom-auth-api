@@ -12,6 +12,7 @@ public class CustomEmailServiceImpl implements CustomEmailService {
 
     @Autowired
     private CustomEmailClient customEmailClient;
+
     @Override
     public void sendActivationLink(User savedUser) {
         EmailModel emailModel = EmailModel.builder()

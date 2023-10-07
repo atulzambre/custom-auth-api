@@ -1,12 +1,14 @@
 package com.custom.auth.controller;
 
 import com.custom.auth.entity.User;
-import com.custom.auth.repository.UserRepository;
 import com.custom.auth.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -18,7 +20,12 @@ public class UserController {
 
     @PostMapping("signUp")
     public ResponseEntity signUpUser(@RequestBody User user) {
-        return new ResponseEntity(userService.saveUser(user),HttpStatus.ACCEPTED);
+        return new ResponseEntity(userService.saveUser(user), HttpStatus.ACCEPTED);
+    }
+
+    @PostMapping("signIn")
+    public ResponseEntity signInUser(@RequestBody User user) {
+        return new ResponseEntity(userService.signIn(user), HttpStatus.ACCEPTED);
     }
 
     @GetMapping("admin/users")
