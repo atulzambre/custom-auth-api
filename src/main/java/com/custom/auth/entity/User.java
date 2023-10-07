@@ -11,7 +11,7 @@ import java.util.Set;
 
 @Entity(name = "user_details")
 @Data
-public class User {
+public class User{
 
     @Id
     @GeneratedValue
