@@ -9,6 +9,7 @@ import com.custom.auth.util.EncDecUtil;
 import com.custom.auth.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,13 +27,17 @@ public class UserServiceImpl implements UserService {
     private EncDecUtil encDecUtil;
 
     @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
     private JwtUtil jwtUtil;
 
     @Override
     public String saveUser(User user) {
         try {
             user.setIsActive(Boolean.FALSE);
-            user.setPassword(encDecUtil.encryptString(user.getPassword()));
+//            user.setPassword(encDecUtil.encryptString(user.getPassword()));
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
             User savedUser = userRepository.save(user);
             return jwtUtil.createJwtToken(savedUser);
 //            customEmailService.sendActivationLink(savedUser);

@@ -1,15 +1,17 @@
 package com.custom.auth.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+
+import com.custom.auth.model.Role;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import lombok.Getter;
+
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity(name = "user_details")
 @Data
@@ -28,6 +30,9 @@ public class User {
     private Boolean isActive;
     @Column
     private Long activateLinkAttempt;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Roles> roles;
 
     @CreationTimestamp
     private LocalDateTime createdDateTime;

@@ -1,6 +1,6 @@
 plugins {
 	java
-	id("org.springframework.boot") version "3.1.4"
+	id("org.springframework.boot") version "2.7.16"
 	id("io.spring.dependency-management") version "1.1.3"
 }
 
@@ -25,18 +25,15 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-web")
-	// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-api
 	implementation("io.jsonwebtoken:jjwt-api:0.11.5")
-// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-impl
+	implementation("org.springframework.boot:spring-boot-starter-security")
 	runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.5")
-// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-jackson
 	runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.5")
 	compileOnly("org.projectlombok:lombok")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	runtimeOnly("com.h2database:h2")
-//	testImplementation("io.projectreactor:reactor-test")
 }
 
 tasks.withType<Test> {

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("users")
 public class UserController {
 
     @Autowired
@@ -22,7 +21,7 @@ public class UserController {
         return new ResponseEntity(userService.saveUser(user),HttpStatus.ACCEPTED);
     }
 
-    @GetMapping
+    @GetMapping("admin/users")
     public ResponseEntity getAllUsers() {
         List<User> userList = userService.getAllUsers();
         return new ResponseEntity(userList, HttpStatus.OK);
