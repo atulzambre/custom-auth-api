@@ -1,13 +1,16 @@
 package com.custom.auth.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import lombok.Getter;
+
+import jakarta.persistence.*;
+import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity(name = "user_details")
-@Getter
+@Data
 public class User {
 
     @Id
@@ -19,4 +22,17 @@ public class User {
     private String password;
     @Column(unique = true)
     private String email;
+    @Column
+    private Boolean isActive;
+    @Column
+    private Long activateLinkAttempt;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Roles> roles;
+
+    @CreationTimestamp
+    private LocalDateTime createdDateTime;
+
+    @UpdateTimestamp
+    private LocalDateTime updatedDateTime;
 }
