@@ -5,10 +5,8 @@ import com.custom.auth.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,7 +18,8 @@ public class UserController {
 
     @PostMapping("signUp")
     public ResponseEntity signUpUser(@RequestBody User user) {
-        return new ResponseEntity(userService.saveUser(user), HttpStatus.ACCEPTED);
+        userService.saveUser(user);
+        return new ResponseEntity(HttpStatus.ACCEPTED);
     }
 
     @PostMapping("signIn")
@@ -29,8 +28,15 @@ public class UserController {
     }
 
     @GetMapping("admin/users")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity getAllUsers() {
         List<User> userList = userService.getAllUsers();
         return new ResponseEntity(userList, HttpStatus.OK);
+    }
+
+    @GetMapping("/activateUser/{token}")
+    public ResponseEntity activateUser(@PathVariable("token") String activationToken) {
+        userService.activateUser(activationToken);
+        return new ResponseEntity("Account Activation: Successful",HttpStatus.OK);
     }
 }

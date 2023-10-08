@@ -29,7 +29,7 @@ public class ApplicationConfig {
     @Bean
     public UserDetailsService userDetailsService() {
         return username -> {
-            User newUser = userRepository.findByUsername(username)
+            User newUser = userRepository.findByUsernameAndIsActive(username, Boolean.TRUE)
                     .orElseThrow(() -> new UsernameNotFoundException("user not found"));
             List<GrantedAuthority> authorities = newUser.getRoles().stream()
                     .map(role -> new SimpleGrantedAuthority(role.getRole().name()))

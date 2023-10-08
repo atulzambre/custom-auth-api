@@ -14,10 +14,10 @@ public class CustomEmailServiceImpl implements CustomEmailService {
     private CustomEmailClient customEmailClient;
 
     @Override
-    public void sendActivationLink(User savedUser) {
+    public void sendActivationLink(User savedUser, String activationToken) {
         EmailModel emailModel = EmailModel.builder()
                 .emailTo(savedUser.getEmail())
-                .emailBody("Activation Link ")
+                .emailBody("Activation Link : http://localhost:9999/activateUser/"+activationToken)
                 .emailSubject("Activate your account")
                 .build();
         customEmailClient.sendActivationLink(emailModel);
