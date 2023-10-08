@@ -69,8 +69,6 @@ public class UserServiceImpl implements UserService {
     public void generateAndSendActivationLink(User savedUser) {
         String activationToken = jwtUtil.createActivationToken(savedUser);
         customEmailService.sendActivationLink(savedUser, activationToken);
-//        savedUser.setActivateLinkAttempt(savedUser.getActivateLinkAttempt()+1);
-//        userRepository.save(savedUser);
     }
 
     @Override
@@ -80,15 +78,21 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Object signIn(User user) {
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword())
-        );
+
         User loggedInUser = userRepository.findByUsername(user.getUsername())
                 .orElseThrow(() -> new UsernameNotFoundException("user not found"));
 
         if (!loggedInUser.getIsActive()) {
+            if(loggedInUser.getActivateLinkAttempt()>5){
+                throw new BadRequestException("Activation Link Attempts reached. Please reach out to support : +1 12345678");
+            }
             generateAndSendActivationLink(loggedInUser);
             return null;
+        }
+        else {
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword())
+            );
         }
         return jwtUtil.createJwtToken(new HashMap<>(), loggedInUser);
     }

@@ -20,7 +20,7 @@ public class CustomEmailServiceImpl implements CustomEmailService {
     public void sendActivationLink(User savedUser, String activationToken) {
         EmailModel emailModel = EmailModel.builder()
                 .emailTo(savedUser.getEmail())
-                .emailBody("Activation Link : http://localhost:9999/activateUser/" + activationToken)
+                .emailBody("http://10.0.0.72:9999/activateUser/" + activationToken)
                 .emailSubject("Activate your account")
                 .build();
 

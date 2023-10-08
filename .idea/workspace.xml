@@ -4,36 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fbe04e41-af3d-44ce-b7d2-e2cce35de999" name="Changes" comment="spring security implementation">
-      <change afterPath="$PROJECT_DIR$/java_pid867.hprof" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/custom/auth/config/KafkaConsumerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/custom/auth/model/EmailAckModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/custom/auth/service/impl/EmailAckService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2.1/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2.1/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2.1/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2.1/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2.1/checksums/sha1-checksums.bin" afterDir="false" />
+    <list default="true" id="fbe04e41-af3d-44ce-b7d2-e2cce35de999" name="Changes" comment="kafka implementation">
       <change beforePath="$PROJECT_DIR$/.gradle/8.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.2.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.2.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/custom/auth/config/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/custom/auth/config/KafkaProducerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/custom/auth/controller/ExtractController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/custom/auth/controller/ExtractController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/custom/auth/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/custom/auth/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/custom/auth/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/custom/auth/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/custom/auth/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/custom/auth/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/custom/auth/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/custom/auth/security/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/custom/auth/service/impl/CustomEmailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/custom/auth/service/impl/CustomEmailServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/custom/auth/service/impl/ExtractServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/custom/auth/service/impl/ExtractServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/custom/auth/service/impl/FillUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/custom/auth/service/impl/FillUserDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/custom/auth/service/impl/EmailAckService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/custom/auth/service/impl/EmailAckService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/custom/auth/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/custom/auth/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/custom/auth/util/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/custom/auth/util/JwtUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +97,7 @@
       <recent name="com.custom.auth.config" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.custom-auth-api [clean]">
+  <component name="RunManager" selected="Application.CustomAuthApiApplication">
     <configuration name="CustomAuthApiApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.custom.auth.CustomAuthApiApplication" />
       <module name="custom-auth-api.main" />
@@ -273,7 +255,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696787175985</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="kafka implementation">
+      <created>1696801741304</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1696801741304</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -292,7 +281,8 @@
     <MESSAGE value="updated user entity" />
     <MESSAGE value="updated code" />
     <MESSAGE value="spring security implementation" />
-    <option name="LAST_COMMIT_MESSAGE" value="spring security implementation" />
+    <MESSAGE value="kafka implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="kafka implementation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -384,74 +374,6 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/custom/auth/service/impl/UserServiceImpl.java</url>
-          <line>97</line>
-          <option name="timeStamp" value="108" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/custom/auth/service/impl/UserServiceImpl.java</url>
-          <line>98</line>
-          <option name="timeStamp" value="109" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/custom/auth/service/impl/UserServiceImpl.java</url>
-          <line>101</line>
-          <option name="timeStamp" value="110" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/custom/auth/service/impl/UserServiceImpl.java</url>
-          <line>99</line>
-          <option name="timeStamp" value="111" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/custom/auth/service/impl/UserServiceImpl.java</url>
-          <line>100</line>
-          <option name="timeStamp" value="112" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/custom/auth/service/impl/UserServiceImpl.java</url>
-          <line>102</line>
-          <option name="timeStamp" value="113" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/custom/auth/service/impl/UserServiceImpl.java</url>
-          <line>104</line>
-          <option name="timeStamp" value="114" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/custom/auth/service/impl/UserServiceImpl.java</url>
-          <line>106</line>
-          <properties>
-            <option name="lambda-ordinal" value="-1" />
-          </properties>
-          <option name="timeStamp" value="115" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/custom/auth/service/impl/UserServiceImpl.java</url>
-          <line>109</line>
-          <option name="timeStamp" value="116" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/custom/auth/service/impl/UserServiceImpl.java</url>
-          <line>110</line>
-          <option name="timeStamp" value="117" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/custom/auth/service/impl/UserServiceImpl.java</url>
-          <line>111</line>
-          <option name="timeStamp" value="118" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/custom/auth/service/impl/UserServiceImpl.java</url>
-          <line>112</line>
-          <option name="timeStamp" value="119" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/custom/auth/service/impl/UserServiceImpl.java</url>
-          <line>108</line>
-          <option name="timeStamp" value="120" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/custom/auth/service/impl/UserServiceImpl.java</url>
           <line>69</line>
           <option name="timeStamp" value="123" />
         </line-breakpoint>
@@ -459,16 +381,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/custom/auth/service/impl/UserServiceImpl.java</url>
           <line>70</line>
           <option name="timeStamp" value="124" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/custom/auth/service/impl/UserServiceImpl.java</url>
-          <line>72</line>
-          <option name="timeStamp" value="125" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/custom/auth/service/impl/UserServiceImpl.java</url>
-          <line>71</line>
-          <option name="timeStamp" value="126" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/custom/auth/service/impl/ExtractServiceImpl.java</url>

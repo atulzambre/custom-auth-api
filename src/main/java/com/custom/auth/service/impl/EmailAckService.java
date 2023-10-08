@@ -19,6 +19,7 @@ public class EmailAckService {
         if(emailAckModel.getIsEmailSent()){
             User user = userRepository.findByEmail(emailAckModel.getEmailTo()).orElseThrow(()->new UsernameNotFoundException("User not found"));
             user.setIsActivationLinkSent(Boolean.TRUE);
+            user.setActivateLinkAttempt(user.getActivateLinkAttempt()+1);
             userRepository.save(user);
         }
     }
