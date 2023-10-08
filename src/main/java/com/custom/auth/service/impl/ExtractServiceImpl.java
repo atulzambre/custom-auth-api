@@ -16,6 +16,7 @@ public class ExtractServiceImpl implements ExtractService {
 
     @Autowired
     private UserRepository userRepository;
+
     @Override
     public XSSFWorkbook extractAllUserDetails() {
         XSSFWorkbook xssfWorkbook = new XSSFWorkbook();
@@ -35,8 +36,8 @@ public class ExtractServiceImpl implements ExtractService {
         //add actual details
         List<User> userList = userRepository.findAll();
 
-        for(int i =0;i< userList.size();i++){
-            row = xssfSheet.createRow(i+1);
+        for (int i = 0; i < userList.size(); i++) {
+            row = xssfSheet.createRow(i + 1);
             User user = userList.get(i);
             row.createCell(0).setCellValue(user.getId());
             row.createCell(1).setCellValue(user.getUsername());

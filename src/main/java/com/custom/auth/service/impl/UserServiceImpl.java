@@ -46,6 +46,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+
     @Override
     @Transactional
     public void saveUser(User user) {
@@ -54,10 +55,10 @@ public class UserServiceImpl implements UserService {
             user.setIsActive(Boolean.FALSE);
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             user.setActivateLinkAttempt(0L);
-            user.setIsActive(Boolean.TRUE);
+            user.setIsActivationLinkSent(Boolean.FALSE);
             User savedUser = userRepository.save(user);
             log.info("Activation Link Generation started");
-            //generateAndSendActivationLink(savedUser);
+            generateAndSendActivationLink(savedUser);
             log.info("Activation Link Generation completed");
             log.info("User registration completed");
         } catch (DataIntegrityViolationException e) {
@@ -65,11 +66,11 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    private void generateAndSendActivationLink(User savedUser) {
+    public void generateAndSendActivationLink(User savedUser) {
         String activationToken = jwtUtil.createActivationToken(savedUser);
         customEmailService.sendActivationLink(savedUser, activationToken);
-        savedUser.setActivateLinkAttempt(savedUser.getActivateLinkAttempt()+1);
-        userRepository.save(savedUser);
+//        savedUser.setActivateLinkAttempt(savedUser.getActivateLinkAttempt()+1);
+//        userRepository.save(savedUser);
     }
 
     @Override
@@ -85,7 +86,7 @@ public class UserServiceImpl implements UserService {
         User loggedInUser = userRepository.findByUsername(user.getUsername())
                 .orElseThrow(() -> new UsernameNotFoundException("user not found"));
 
-        if(!loggedInUser.getIsActive()){
+        if (!loggedInUser.getIsActive()) {
             generateAndSendActivationLink(loggedInUser);
             return null;
         }
@@ -94,7 +95,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void activateUser(String activationToken) {
-        if(Objects.isNull(activationToken) || jwtUtil.isTokenExpired(activationToken)){
+        if (Objects.isNull(activationToken) || jwtUtil.isTokenExpired(activationToken)) {
             throw new BadRequestException("Invalid Activation Token");
         }
         String username = jwtUtil.extractUserName(activationToken);
@@ -105,11 +106,10 @@ public class UserServiceImpl implements UserService {
 
         User user = userRepository.findByUsernameAndIsActive(username, Boolean.FALSE).orElseThrow(() -> new BadRequestException("Invalid Activation Token"));
 
-        if(user.getUsername().equals(usernameT)&&user.getPassword().equals(passwordT)&&user.getEmail().equals(emailT)){
+        if (user.getUsername().equals(usernameT) && user.getPassword().equals(passwordT) && user.getEmail().equals(emailT)) {
             user.setIsActive(true);
             userRepository.save(user);
-        }
-        else
+        } else
             throw new BadRequestException("Invalid Activation Token");
     }
 }

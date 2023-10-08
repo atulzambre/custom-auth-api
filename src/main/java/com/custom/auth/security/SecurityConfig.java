@@ -1,12 +1,10 @@
 package com.custom.auth.security;
 
-import com.custom.auth.model.Role;
 import com.custom.auth.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.configuration.EnableGlobalAuthentication;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -38,11 +36,11 @@ public class SecurityConfig {
         http.authorizeHttpRequests((auth) ->
 //                        auth.requestMatchers(new AntPathRequestMatcher("/admin/**")).hasAuthority(Role.ADMIN.name())
                                 auth.requestMatchers(new AntPathRequestMatcher("/signUp"),
-                                        new AntPathRequestMatcher("/signIn"),
-                                        new AntPathRequestMatcher("/activateUser/**"),
-                                        new AntPathRequestMatcher("/swagger-ui/**")).permitAll()
-                                .anyRequest()
-                                .authenticated()
+                                                new AntPathRequestMatcher("/signIn"),
+                                                new AntPathRequestMatcher("/activateUser/**"),
+                                                new AntPathRequestMatcher("/swagger-ui/**")).permitAll()
+                                        .anyRequest()
+                                        .authenticated()
                 )
                 .httpBasic(withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)

@@ -33,7 +33,7 @@ public class ExtractController {
         header.set(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=UserDetails.xlsx");
         xssfWorkbook.write(byteArrayOutputStream);
         xssfWorkbook.close();
-        return new ResponseEntity(new ByteArrayResource(byteArrayOutputStream.toByteArray()),header,HttpStatus.OK);
+        return new ResponseEntity(new ByteArrayResource(byteArrayOutputStream.toByteArray()), header, HttpStatus.OK);
     }
 
 }

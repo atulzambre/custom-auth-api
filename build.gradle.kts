@@ -30,6 +30,9 @@ dependencies {
 	implementation("org.springframework.cloud:spring-cloud-starter-sleuth:3.1.9")
 	// https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui
 	implementation("org.springdoc:springdoc-openapi-ui:1.7.0")
+	// https://mvnrepository.com/artifact/org.postgresql/postgresql
+	implementation("org.postgresql:postgresql:42.6.0")
+
 // https://mvnrepository.com/artifact/org.apache.poi/poi
 	implementation("org.apache.poi:poi:5.2.4")
 // https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml
@@ -43,7 +46,7 @@ dependencies {
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	runtimeOnly("com.h2database:h2")
+//	runtimeOnly("com.h2database:h2")
 }
 
 tasks.withType<Test> {

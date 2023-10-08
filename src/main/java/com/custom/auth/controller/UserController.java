@@ -37,6 +37,6 @@ public class UserController {
     @GetMapping("/activateUser/{token}")
     public ResponseEntity activateUser(@PathVariable("token") String activationToken) {
         userService.activateUser(activationToken);
-        return new ResponseEntity("Account Activation: Successful",HttpStatus.OK);
+        return new ResponseEntity("Account Activation: Successful", HttpStatus.OK);
     }
 }
